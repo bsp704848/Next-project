@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { connectionStr } from "@/app/lib/db";
 import { Product } from "@/app/lib/model/product";
 import mongoose from "mongoose";
@@ -9,7 +11,7 @@ export async function GET() {
     const data = await Product.find();
     return NextResponse.json({ result: data, success: true });
   } catch (error) {
-    console.error("Error in GET /api/products:", error.message);
+    console.error("Error in GET:", error.message);
     return NextResponse.json({ result: [], success: false, message: error.message });
   }
 }

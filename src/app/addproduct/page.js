@@ -13,7 +13,7 @@ export default function Page() {
 
     const addProduct = async() => {
         console.log(name,price,color,company,category);
-        let result = await fetch("http://localhost:3000/api/products", {
+        let result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`, {
             method: "POST",
             body: JSON.stringify({name, price, color, company, category})
         });

@@ -1,4 +1,6 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -22,7 +24,7 @@ export default function Page(props) {
 
  const getProductDetail = async () => {
         let productId=props.params.editproduct
-        let productData = await fetch("http://localhost:3000/api/products/" + productId);
+        let productData = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products` + productId);
         productData = await productData.json();
         if (productData.success) {
             let result = productData.result;
@@ -37,7 +39,7 @@ export default function Page(props) {
 
     const updateProduct = async () => {
          let productId=props.params.editproduct
-        let data = await fetch("http://localhost:3000/api/products/"+productId, {
+        let data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`+productId, {
             method: "PUT",
             body: JSON.stringify({name, price, color, company, category})
         });

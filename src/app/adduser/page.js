@@ -8,7 +8,7 @@ export default function Page() {
     const [age, setAge] = useState("");
     
 const addUser = async () => {
-    let response = await fetch("http://localhost:3000/api/users", {
+    let response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

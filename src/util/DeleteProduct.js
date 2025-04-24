@@ -6,7 +6,7 @@ export default function DeleteProduct(props) {
     const router = useRouter();
 
     const deleteRecord = async() => {
-        let response = await fetch("http://localhost:3000/api/products/" + props.id, {
+        let response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products` + props.id, {
             method: "DELETE"
         });
         response = await response.json();
